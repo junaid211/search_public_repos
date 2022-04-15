@@ -15,6 +15,6 @@
  */
 
 form, form div { display: inline; }
-a {
+.bold-link {
   font-weight: bold;
 }
