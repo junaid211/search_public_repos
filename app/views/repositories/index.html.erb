@@ -1,0 +1,27 @@
+<h2>Hello! Search for your Favorite Public GitHub Repositories</h2>
+<div>
+	<p>
+		<%= simple_form_for :repos, method: :get do |f| %>
+		  <%= f.input :search, label: false %>
+		  <%= f.submit 'Search' %>
+		<% end %>
+		<%= link_to 'Clear Search', root_path %>
+	</p>
+</div>
+
+<div>
+	<% if @error.nil? && @repositories.present? %>
+		<% @repositories.each do |repo| %>
+			<p>
+				<%= link_to repo["full_name"], repo["html_url"] %> <br />
+				<%= truncate(repo["description"], length: 500) %>
+			</p>
+			<hr>
+		<% end %>
+		<% (1..@pages).each do |page_no| %>
+			<%= link_to page_no, url_for(request.params.merge({page: page_no})) %>
+		<% end %>
+	<% else %>
+		<%= @error || 'No results found.' %>
+	<% end %>
+</div>
