@@ -1,0 +1,10 @@
+<h2>Hello! Search for your Favorite Public GitHub Repositories</h2>
+<div>
+	<p>
+		<%= simple_form_for :repos, url: repositories_search_path, method: :get do |f| %>
+		  <%= f.input :search, label: false %>
+		  <%= f.submit 'Search' %>
+		<% end %>
+		<%= link_to 'Clear Search', root_path %>
+	</p>
+</div>

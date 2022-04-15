@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "repositories#index"
+
+  get '/repositories/search', to: 'repositories#search'
 end

@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  errors:
+    no_result: 'No results found'
+    no_search_term: 'Please enter a search criteria'

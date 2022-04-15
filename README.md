@@ -1,24 +1,24 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple app to search for the public github repos
 
-Things you may want to cover:
+Dependencies:
 
-* Ruby version
+* Ruby version 2.7.4
 
-* System dependencies
+* Rails version 7.0.0
 
 * Configuration
 
-* Database creation
+- Clone the repo
 
-* Database initialization
+- Run `bundle install`
+
+- run `rails s` to launch the app at http://localhost:3000
+
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+- `bundle exec rspec`
 
-* Deployment instructions
 
-* ...

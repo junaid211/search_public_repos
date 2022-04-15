@@ -1,0 +1,19 @@
+<%= render 'form' %>
+
+<div>
+	<% if @error.present? || @repositories.blank? %>
+		<%= @error %>
+	<% else %>
+		<% @repositories.each do |repo| %>
+			<p>
+				<%= link_to repo[:full_name], repo[:html_url] %> <br />
+				<%= truncate(repo[:description], length: 500) %>
+			</p>
+			<hr>
+		<% end %>
+		<% (1..@pages).each do |page_no| %>
+			<%= link_to page_no, url_for(request.params.merge(page: page_no)) %>
+		<% end %>
+	<% end %>
+</div>
+
