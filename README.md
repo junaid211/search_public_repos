@@ -1,4 +1,4 @@
-# README
+# Search Public GitHub Repos
 
 A simple app to search for the public github repos
 
