@@ -1,4 +1,4 @@
-# README
+# Search Public GitHub Repos
 
 A simple app to search for the public github repos
 
@@ -8,7 +8,7 @@ Dependencies:
 
 * Rails version 7.0.0
 
-* Configuration
+Configuration
 
 - Clone the repo
 
@@ -16,8 +16,7 @@ Dependencies:
 
 - run `rails s` to launch the app at http://localhost:3000
 
-
-* How to run the test suite
+How to run the test suite
 
 - `bundle exec rspec`
 
