@@ -25,7 +25,7 @@ class RepositoriesController < ApplicationController
 
 	def sanitize_page
 		current_page = params[:page].to_i
-		return 1 if current_page < 1
+		return 1 if current_page < 1 || current_page > 10
 
 		current_page
 	end
