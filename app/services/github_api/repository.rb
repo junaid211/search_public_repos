@@ -44,10 +44,16 @@ module GithubApi
       items.map { |r| r.slice(:full_name, :html_url, :description) }
     end
 
+    # INFO: 10 pages are returned if the results are more than 10 pages
+    # as github api doesnt respond with more than 1000 items for a query
     def total_pages(items_count)
       return 0 if items_count.to_i.zero?
 
-      (items_count.to_f / DEFAULT_PER_PAGE).ceil
+      pages = (items_count.to_f / DEFAULT_PER_PAGE).ceil
+
+      return pages if pages <= 10
+
+      10
     end
   end
 end

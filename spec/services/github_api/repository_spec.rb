@@ -22,6 +22,15 @@ RSpec.describe ::GithubApi::Repository, type: :service do
       expect(result[:error_message]).to be_nil
       expect(result[:success]).to be_truthy
     end
+
+    it 'checks pages to be less than 10' do
+      stub_request(:get, 'https://api.github.com/search/repositories?page=1&per_page=100&q=search&sort=stars').
+        to_return(status: 200, body: hash_to_check_pages_count.to_json)
+      result = described_class.new('search', page: 1).call
+
+      expect(result[:pages]).to eq(10)
+      expect(result[:success]).to be_truthy
+    end
   end
 
   context '#call with 404' do
@@ -65,6 +74,27 @@ RSpec.describe ::GithubApi::Repository, type: :service do
             "id": 263139253456122,
             "node_id": '123453'
           },
+          "html_url": 'https://github.com/junaid2/photo-app2',
+          "description": 'A test app'
+        }
+      ],
+      "incomplete_results": false
+    }
+  end
+
+  def hash_to_check_pages_count
+    {
+      "total_count": 100000000000,
+      "items": [
+        {
+          "name": 'junaid2/photo-app',
+          "full_name": 'junaid2/photo-app',
+          "html_url": 'https://github.com/junaid2/photo-app',
+          "description": 'A test app'
+        },
+        {
+          "name": 'junaid2/photo-app2',
+          "full_name": 'junaid2/photo-app2',
           "html_url": 'https://github.com/junaid2/photo-app2',
           "description": 'A test app'
         }
